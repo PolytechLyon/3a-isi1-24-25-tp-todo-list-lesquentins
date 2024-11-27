@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Fonction pour ajouter un item
     addButton.addEventListener('click', function() {
+
         const newItemText = inputField.value.trim();
+        const editItemText = inputEdit.value.trim();
 
         if (newItemText) {
 
@@ -36,12 +38,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             editButton.addEventListener('click',function () {
+
                 editTaskPanel.hidden = false
                 NewPanel.hidden = true
 
-                confirmEditButton.addEventListener('click',function () {
-                    const newItemText = inputEdit.value.trim();
-                })
+                confirmEditButton.onclick = function () {
+                    newItem.textContent = editItemText
+
+                    if(newItem){
+                        editTaskPanel.hidden = true
+                        NewPanel.hidden = false
+                        inputField.value = ''
+                    }
+
+                }
 
                 cancelEditButton.addEventListener('click', function () {
                     editTaskPanel.hidden = true
